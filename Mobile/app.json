@@ -1,15 +1,13 @@
 {
   "expo": {
-    "name": "LandsRMS",
-    "slug": "LandsRMS",
+    "name": "MRM",
+    "slug": "MRM",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo_main.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logo_main.png",
-      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
@@ -17,7 +15,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo_main.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
@@ -27,7 +25,15 @@
     },
     "plugins": [
       "expo-video",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/logo_main.png",
+          "imageWidth": 200
+        }
+      ]
     ]
   }
 }
