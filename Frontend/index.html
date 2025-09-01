@@ -1,30 +1,78 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" >
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Ghana Lands Commission | Rent Management System</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <meta name="description" content="Official Rent Management System for Ghana Lands Commission. Secure, efficient, and transparent rent administration platform." />
+    <meta name="keywords" content="Ghana Lands Commission, rent management, land rent, lease, property administration, Ghana real estate, GLC system" />
+    
+    <link rel="canonical" href="https://www.zeusatlasltd.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="en_GH" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ghana Lands Commission | Rent Management System" />
+    <meta property="og:description" content="Streamline rent and lease management with the official Ghana Lands Commission platform." />
+    <meta property="og:url" content="https://www.zeusatlasltd.com/" />
+    <meta property="og:site_name" content="Ghana Lands Commission" />
+    <meta property="og:image" content="https://www.zeusatlasltd.com/assets/media/logos/glc-social.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ghana Lands Commission | Rent Management System" />
+    <meta name="twitter:description" content="Efficient and secure rent management system for Ghana Lands Commission." />
+    <meta name="twitter:image" content="https://www.zeusatlasltd.com/assets/media/logos/glc-social.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/media/logos/logo_main.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link href="/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" />
+    <link href="/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" />
+    <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" />
+    <link href="/assets/css/style.bundle.css" rel="stylesheet" />
   </head>
-  <body>
+
+  <body id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
+
     <div id="root"></div>
+
+    <!-- Vite entry -->
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Vendor bundles -->
+    <script src="/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/assets/js/scripts.bundle.js"></script>
+    <script src="/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script src="/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+
+    <!-- Charts (amCharts via CDN) -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="/assets/js/widgets.bundle.js"></script>
+    <script src="/assets/js/custom/widgets.js"></script>
+    <script src="/assets/js/custom/apps/chat/chat.js"></script>
+    <script src="/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="/assets/js/custom/utilities/modals/create-app.js"></script>
+    <script src="/assets/js/custom/utilities/modals/new-target.js"></script>
+    <script src="/assets/js/custom/utilities/modals/users-search.js"></script>
   </body>
 </html>
-
-
-
-
-<!-- 
-echo "# LandsRMS" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/zeusatlas/LandsRMS.git
-git push -u origin main
-
-
-git remote add origin https://github.com/zeusatlas/LandsRMS.git
-git branch -M main
-git push -u origin main -->

@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import RootLayout from './layouts/RootLayout';
+import ErrorPage from './pages/ErrorPage';
+import authRoutes from "./routes/auth";
+import sharedRoutes from "./routes/shared";
+import { Toaster } from "sonner";
 
-function App() {
-  const [count, setCount] = useState(0)
+// 🔹 Fake static user (always authenticated)
+const user = {
+  id: 1,
+  username: "admin",
+  role: "admin",
+  loginStatus: "authenticated"
+};
 
+// 🔹 Open routes that skip auth check
+const openRoutes = [
+  "/admin/users/list",
+  "/settings/system-roles",
+];
+
+// 🔹 ProtectedRoute
+const ProtectedRoute = ({ children }) => {
+  const location = useLocation();
+
+  // ✅ If route is open, skip auth check
+  if (openRoutes.includes(location.pathname)) {
+    return children;
+  }
+
+  // 🔒 Otherwise require authentication
+  if (!user || user?.loginStatus !== "authenticated") {
+    return <Navigate to="/auth/login" replace />;
+  }
+  return children;
+};
+
+// 🔹 Main App
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <Toaster richColors position="top-right" expand={true} closeButton />
 
-export default App
+      <Routes>
+        
+        {authRoutes()}
+
+        <Route element={<ProtectedRoute><RootLayout /></ProtectedRoute>}>
+
+          {sharedRoutes()}
+
+          <Route path="*" element={<ErrorPage />} />
+
+        </Route>
+      </Routes>
+    </>
+  );
+};
+
+export default App;
