@@ -1,6 +1,6 @@
 # Ghana Lands Commission Rent Management System (GLC RMS)
 
-![Ghana Lands Commission Logo](https://www.zeusatlasltd.com/img/logo3.png)
+<img src="https://www.zeusatlasltd.com/img/logo3.png" alt="Ghana Lands Commission Logo" width="200"/>
 
 Official Rent Management System for Ghana Lands Commission. This platform streamlines the management of state lands, tenants, invoices, payments, and reporting. Designed for efficiency, transparency, and security in land and rent administration.
 
