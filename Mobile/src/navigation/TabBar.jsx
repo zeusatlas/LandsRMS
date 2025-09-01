@@ -85,10 +85,10 @@ export default function TabBar() {
       })}
     >
 
-      <Tab.Screen name="Wallets" component={WalletScreen} />
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Properties" component={PropertiesScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
+      <Tab.Screen name="Wallets" component={WalletScreen} />
 
     </Tab.Navigator>
   );

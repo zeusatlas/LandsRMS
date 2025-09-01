@@ -5,8 +5,8 @@ const isDev = true;
 
 let Config = [
   {
-    APP_NAME: 'Showvana',
-    APP_ALLIASE: 'Sv-Flow',
+    APP_NAME: 'Ghana Lands Commission MyRent',
+    APP_ALLIASE: 'GLC MyRent',
     APP_VERSION: 'Community e2',
     BRAND_NAME: 'SkaiMount',
     BASE_URL: isDev

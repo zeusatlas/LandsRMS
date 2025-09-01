@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "MRM",
-    "slug": "MRM",
+    "name": "GLC MyRent",
+    "slug": "GLC MyRent",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo_main.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#657F31"
     },
     "ios": {
       "supportsTablet": true
@@ -16,7 +16,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#657F31"
       },
       "edgeToEdgeEnabled": true
     },
@@ -29,7 +29,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#657F31",
           "image": "./assets/logo_main.png",
           "imageWidth": 200
         }
