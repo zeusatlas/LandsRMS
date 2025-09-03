@@ -7,7 +7,7 @@ const NOTIFICATION_DATA = [
     content: "Your land rent for Plot A-23 is due on 5th September. Please ensure timely payment to avoid penalties.",
     type: "Reminder",
     from: "Personal",
-    image: require('assets/m2.jpg'),
+    image: require('assets/m9.jpg'),
   },
   {
     id: "2",

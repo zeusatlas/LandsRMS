@@ -6,6 +6,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { View, ActivityIndicator, StatusBar, Text, TextInput } from "react-native";
 import { COLORS } from "styles/theme";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,13 +35,15 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-        <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} translucent={false} />
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+          <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} translucent={false} />
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
