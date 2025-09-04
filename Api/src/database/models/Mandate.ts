@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { AppTimestamps } from "../BaseEntity";
 import { Party } from "./Party";
 import { PaymentMethod } from "./PaymentMethod";
@@ -8,10 +8,10 @@ import { MandateStatus } from "../enums";
 @Entity({ name: "mandates" })
 export class Mandate extends AppTimestamps {
   @PrimaryGeneratedColumn("uuid")
-  id!: string;
+  id: string;
 
   @ManyToOne(() => Party, p => p.mandates, { onDelete: "CASCADE" })
-  party!: Party;
+  party: Party;
 
   @ManyToOne(() => PaymentMethod, { onDelete: "SET NULL", nullable: true })
   payment_method?: PaymentMethod | null;
@@ -23,17 +23,26 @@ export class Mandate extends AppTimestamps {
   external_ref?: string | null;
 
   @Column({ type: "enum", enum: MandateStatus, default: MandateStatus.PENDING })
-  status!: MandateStatus;
+  status: MandateStatus;
 
   @Column({ type: "numeric", nullable: true })
   max_amount?: string | null;
 
   @Column({ type: "date" })
-  start_date!: string;
+  start_date: string;
 
   @Column({ type: "date", nullable: true })
   end_date?: string | null;
 
   @Column({ type: "timestamptz" })
-  consent_captured_at!: Date;
+  consent_captured_at: Date;
+
+  @Column({ default: false, select: false })
+  is_deleted: boolean;
+
+  @CreateDateColumn({ name: 'created_at' })
+  created_at: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', select: false })
+  updated_at: Date;
 }

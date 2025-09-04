@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { AppTimestamps } from "../BaseEntity";
 import { PaymentProvider } from "./PaymentProvider";
 import { ReconciliationLine } from "./ReconciliationLine";
@@ -7,19 +7,28 @@ import { ReconciliationStatus } from "../enums";
 @Entity({ name: "reconciliations" })
 export class Reconciliation extends AppTimestamps {
   @PrimaryGeneratedColumn("uuid")
-  id!: string;
+  id: string;
 
   @ManyToOne(() => PaymentProvider, p => p.reconciliations, { nullable: false })
-  provider!: PaymentProvider;
+  provider: PaymentProvider;
 
   @Column({ type: "varchar", length: 255 })
-  file_name!: string;
+  file_name: string;
 
   @Column({ type: "date" })
-  file_date!: string;
+  file_date: string;
+
+  @Column({ default: false, select: false })
+  is_deleted: boolean;
+
+  @CreateDateColumn({ name: 'created_at' })
+  created_at: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', select: false })
+  updated_at: Date;
 
   @Column({ type: "enum", enum: ReconciliationStatus, default: ReconciliationStatus.IMPORTED })
-  status!: ReconciliationStatus;
+  status: ReconciliationStatus;
 
   @OneToMany(() => ReconciliationLine, rl => rl.reconciliation)
   lines?: ReconciliationLine[];

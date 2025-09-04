@@ -1,30 +1,36 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Webhook } from "./Webhook";
 import { WebhookEventStatus } from "../enums";
 
 @Entity({ name: "webhook_events" })
 export class WebhookEvent {
   @PrimaryGeneratedColumn("uuid")
-  id!: string;
+  id: string;
 
   @ManyToOne(() => Webhook, { nullable: false, onDelete: "CASCADE" })
-  webhook!: Webhook;
+  webhook: Webhook;
 
   @Column({ type: "varchar", length: 128 })
-  event_type!: string;
+  event_type: string;
 
   @Column({ type: "jsonb" })
-  payload!: any;
+  payload: any;
 
   @Column({ type: "enum", enum: WebhookEventStatus, default: WebhookEventStatus.PENDING })
-  status!: WebhookEventStatus;
+  status: WebhookEventStatus;
 
   @Column({ type: "timestamptz", nullable: true })
   last_attempt_at?: Date | null;
 
   @Column({ type: "int", default: 0 })
-  attempt_count!: number;
-  
-  @Column({ type: "timestamptz" })
-  created_at!: Date;
+  attempt_count: number;
+
+  @Column({ default: false, select: false })
+  is_deleted: boolean;
+
+  @CreateDateColumn({ name: 'created_at' })
+  created_at: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', select: false })
+  updated_at: Date;
 }

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { AppDataSource } from '../data-source';
-import { WhiteToken } from '../database/models/EntityWhiteToken';
+import { WhiteToken } from '../database/models/WhiteToken';
 import { CustomAppError } from '../utils/custom-app-error';
 import { ErrorCodes } from '../utils/error-codes';
 import { decodeToken } from '../utils/token-crypto';

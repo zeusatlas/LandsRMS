@@ -1,17 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Index } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Index, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Party } from "./Party";
 import { PaymentMethodType, ProviderCode } from "../enums";
 
 @Entity({ name: "payment_methods" })
 export class PaymentMethod {
   @PrimaryGeneratedColumn("uuid")
-  id!: string;
+  id: string;
 
   @ManyToOne(() => Party, p => p.payment_methods, { onDelete: "CASCADE" })
-  party!: Party;
+  party: Party;
 
   @Column({ type: "enum", enum: PaymentMethodType })
-  type!: PaymentMethodType;
+  type: PaymentMethodType;
 
   @Column({ type: "enum", enum: ProviderCode, nullable: true })
   provider?: ProviderCode | null;
@@ -26,8 +26,17 @@ export class PaymentMethod {
   expiry_date?: string | null;
 
   @Column({ type: "boolean", default: false })
-  is_default!: boolean;
+  is_default: boolean;
 
   @Column({ type: "enum", enum: ["ACTIVE", "INACTIVE"], default: "ACTIVE" })
-  status!: "ACTIVE" | "INACTIVE";
+  status: "ACTIVE" | "INACTIVE";
+
+  @Column({ default: false, select: false })
+  is_deleted: boolean;
+
+  @CreateDateColumn({ name: 'created_at' })
+  created_at: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', select: false })
+  updated_at: Date;
 }

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, UpdateDateColumn, CreateDateColumn } from "typeorm";
 import { AppTimestamps } from "../BaseEntity";
 import { Invoice } from "./Invoice";
 import { Payment } from "./Payment";
@@ -8,7 +8,7 @@ import { User } from "./User";
 @Entity({ name: "adjustments" })
 export class Adjustment extends AppTimestamps {
   @PrimaryGeneratedColumn("uuid")
-  id!: string;
+  id: string;
 
   @ManyToOne(() => Invoice, { nullable: true, onDelete: "SET NULL" })
   invoice?: Invoice | null;
@@ -17,17 +17,26 @@ export class Adjustment extends AppTimestamps {
   payment?: Payment | null;
 
   @Column({ type: "enum", enum: AdjustmentType })
-  type!: AdjustmentType;
+  type: AdjustmentType;
 
   @Column({ type: "numeric" })
-  amount!: string;
+  amount: string;
 
   @Column({ type: "varchar", length: 255, nullable: true })
   reason?: string | null;
 
   @Column({ type: "enum", enum: AdjustmentStatus, default: AdjustmentStatus.PENDING })
-  status!: AdjustmentStatus;
+  status: AdjustmentStatus;
 
   @ManyToOne(() => User, { nullable: true })
   created_by?: User | null;
+
+  @Column({ default: false, select: false })
+  is_deleted: boolean;
+
+  @CreateDateColumn({ name: 'created_at' })
+  created_at: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', select: false })
+  updated_at: Date;
 }
